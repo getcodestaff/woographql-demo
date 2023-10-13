@@ -102,13 +102,6 @@ fragment ProductContentSmall on Product {
       name
     }
   }
-  allPaColor(first: 100) {
-    nodes {
-      id
-      slug
-      name
-    }
-  }
   ... on SimpleProduct {
     onSale
     stockStatus
@@ -348,7 +341,7 @@ query GetTopNav {
   }
 }
 
-query GetProducts($first: Int, $after: String, $where: RootQueryToProductConnectionWhereArgs) {
+query GetProducts($first: Int, $after: String, $where: RootQueryToProductUnionConnectionWhereArgs) {
   products(first: $first, after: $after, where: $where) {
     pageInfo {
       endCursor
@@ -395,27 +388,6 @@ query GetShopCategories($first: Int, $after: String, $where: RootQueryToProductC
 
 query GetShopTags($first: Int, $after: String, $where: RootQueryToProductTagConnectionWhereArgs) {
   productTags(first: $first, after: $after, where: $where) {
-    pageInfo {
-      hasNextPage
-      endCursor
-    }
-    edges {
-      node {
-        id
-        name
-        slug
-      }
-    }
-    nodes {
-      id
-      name
-      slug
-    }
-  }
-}
-
-query GetShopColors($first: Int, $after: String, $where: RootQueryToPaColorConnectionWhereArgs) {
-  allPaColor(first: $first, after: $after, where: $where) {
     pageInfo {
       hasNextPage
       endCursor

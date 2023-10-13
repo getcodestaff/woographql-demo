@@ -20,4 +20,5 @@ const config: CodegenConfig = {
     }
   }
 }
+console.log('config: ', config);
 export default config;
